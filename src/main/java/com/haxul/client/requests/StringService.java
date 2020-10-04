@@ -10,5 +10,5 @@ import com.haxul.client.objects.CallResponse;
  */
 @RemoteServiceRelativePath("greet")
 public interface StringService extends RemoteService {
-  CallResponse greetServer(CallInput text) throws IllegalArgumentException;
+  CallResponse greetServer(CallInput text) throws Exception;
 }

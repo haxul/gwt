@@ -40,7 +40,8 @@ public class app implements EntryPoint {
 
                 @Override
                 public void onFailure(Throwable throwable) {
-                    Window.alert(throwable.getMessage());
+                    serverOutput.setText(throwable.getMessage());
+
                 }
 
                 @Override

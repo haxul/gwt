@@ -13,7 +13,8 @@ public class GreetingServiceImpl extends RemoteServiceServlet implements StringS
 
 
     @Override
-    public CallResponse greetServer(CallInput text) throws IllegalArgumentException {
+    public CallResponse greetServer(CallInput text) throws Exception {
+        if (text.text.length() < 5 ) throw new Exception("length is less than 5");
         CallResponse response = new CallResponse();
         response.responseCode = 200;
         response.responseText = text.text;
