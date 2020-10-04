@@ -5,6 +5,8 @@ import com.google.gwt.core.client.GWT;
 import com.google.gwt.user.client.Window;
 import com.google.gwt.user.client.rpc.AsyncCallback;
 import com.google.gwt.user.client.ui.*;
+import com.haxul.client.objects.CallInput;
+import com.haxul.client.objects.CallResponse;
 import com.haxul.client.requests.StringService;
 import com.haxul.client.requests.StringServiceAsync;
 import com.haxul.client.requests.TrimService;
@@ -32,18 +34,20 @@ public class app implements EntryPoint {
 
         Button button = new Button("send");
         button.addClickHandler((e) -> {
-           trimService.trimText(textBox.getText(), new AsyncCallback<String>() {
+            CallInput request = new CallInput();
+            request.text = textBox.getText();
+            serviceAsync.greetServer(request, new AsyncCallback<CallResponse>() {
 
-               @Override
-               public void onFailure(Throwable throwable) {
+                @Override
+                public void onFailure(Throwable throwable) {
                     Window.alert(throwable.getMessage());
-               }
+                }
 
-               @Override
-               public void onSuccess(String s) {
-                    serverOutput.setText(s + " !!!!!!!!!!!");
-               }
-           });
+                @Override
+                public void onSuccess(CallResponse callResponse) {
+                    serverOutput.setText(callResponse.responseText +" : code " + callResponse.responseCode);
+                }
+            });
         });
 
 
