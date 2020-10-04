@@ -5,6 +5,10 @@ import com.google.gwt.core.client.GWT;
 import com.google.gwt.user.client.Window;
 import com.google.gwt.user.client.rpc.AsyncCallback;
 import com.google.gwt.user.client.ui.*;
+import com.haxul.client.requests.StringService;
+import com.haxul.client.requests.StringServiceAsync;
+import com.haxul.client.requests.TrimService;
+import com.haxul.client.requests.TrimServiceAsync;
 
 /**
  * Entry point classes define <code>onModuleLoad()</code>.
@@ -13,6 +17,7 @@ public class app implements EntryPoint {
 
     private final VerticalPanel mainPanel = new VerticalPanel();
     private final StringServiceAsync serviceAsync = GWT.create(StringService.class);
+    private final TrimServiceAsync trimService = GWT.create(TrimService.class);
 
 
     @Override
@@ -27,21 +32,21 @@ public class app implements EntryPoint {
 
         Button button = new Button("send");
         button.addClickHandler((e) -> {
-            serviceAsync.greetServer(textBox.getText(), new AsyncCallback<String>() {
+           trimService.trimText(textBox.getText(), new AsyncCallback<String>() {
 
-                @Override
-                public void onFailure(Throwable throwable) {
-                        Window.alert(throwable.getMessage());
-                }
+               @Override
+               public void onFailure(Throwable throwable) {
+                    Window.alert(throwable.getMessage());
+               }
 
-                @Override
-                public void onSuccess(String s) {
-                    serverOutput.setText(s);
-                }
-            });
-            textBox.setText("");
-            label.setText("");
+               @Override
+               public void onSuccess(String s) {
+                    serverOutput.setText(s + " !!!!!!!!!!!");
+               }
+           });
         });
+
+
         button.setStyleName("redButton");
 
         mainPanel.add(h1);

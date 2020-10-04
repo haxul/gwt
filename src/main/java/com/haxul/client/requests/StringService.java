@@ -1,4 +1,4 @@
-package com.haxul.client;
+package com.haxul.client.requests;
 
 import com.google.gwt.user.client.rpc.RemoteService;
 import com.google.gwt.user.client.rpc.RemoteServiceRelativePath;

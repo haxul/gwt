@@ -10,12 +10,22 @@
     <servlet-name>greetServlet</servlet-name>
     <servlet-class>com.haxul.server.GreetingServiceImpl</servlet-class>
   </servlet>
-  
+  <servlet>
+    <servlet-name>com.haxul.app TrimService</servlet-name>
+    <servlet-class>com.haxul.server.TrimServiceImp</servlet-class>
+  </servlet>
+
   <servlet-mapping>
     <servlet-name>greetServlet</servlet-name>
     <url-pattern>/app/greet</url-pattern>
   </servlet-mapping>
-  
+
+
+  <servlet-mapping>
+    <servlet-name>com.haxul.app TrimService</servlet-name>
+    <url-pattern>/app/trim</url-pattern>
+  </servlet-mapping>
+
   <!-- Default page to serve -->
   <welcome-file-list>
     <welcome-file>app.html</welcome-file>
